@@ -9,6 +9,7 @@ import { CountBadge } from '@/shared/Badge';
 import { IconButton } from '@/shared/Button';
 import { Container } from '@/shared/Container';
 import { PRODUCTS_ANCHOR, routes } from '@/utils/routes';
+import { CategoryMenu } from './CategoryMenu';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { SearchForm } from './SearchForm';
 import { ThemeToggle } from './ThemeToggle';
@@ -147,6 +148,9 @@ export function Header({ cartCount = 0 }: HeaderProps) {
                 <Link href={{ pathname: routes.home, hash: PRODUCTS_ANCHOR }} onClick={closeMenu}>
                   {t('Header.products')}
                 </Link>
+              </li>
+              <li>
+                <CategoryMenu onNavigate={closeMenu} />
               </li>
               <li>
                 <Link href={routes.cart} onClick={closeMenu}>

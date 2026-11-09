@@ -3,9 +3,6 @@
     "title": "NOVA Store",
     "description": "NOVA online store: discover products, filter by category and manage your cart."
   },
-  "HomePage": {
-    "title": "Welcome to NOVA"
-  },
   "Currency": {
     "toman": "Toman"
   },
@@ -48,5 +45,50 @@
     "telegram": "Telegram",
     "linkedin": "LinkedIn",
     "copyright": "© {year} NOVA. All rights reserved."
+  },
+  "Hero": {
+    "eyebrow": "New season",
+    "title": "Everyday essentials, thoughtfully chosen",
+    "subtitle": "Clothing, jewelry and electronics with simple prices and fast delivery.",
+    "cta": "View products"
+  },
+  "Categories": {
+    "heading": "Shop by category",
+    "all": "All",
+    "menu": "Categories",
+    "electronics": "Electronics",
+    "jewelery": "Jewelry",
+    "mens": "Men's clothing",
+    "womens": "Women's clothing"
+  },
+  "Products": {
+    "heading": "Featured products",
+    "results": "{count, plural, =0 {No products} one {# product} other {# products}}",
+    "sortLabel": "Sort by",
+    "clearFilters": "Clear filters",
+    "addToCart": "Add to cart",
+    "ratingLabel": "Rated {rate} out of 5 from {count} reviews"
+  },
+  "Sort": {
+    "default": "Featured",
+    "price-asc": "Price: low to high",
+    "price-desc": "Price: high to low",
+    "title-asc": "Name: A to Z",
+    "title-desc": "Name: Z to A",
+    "rating": "Top rated"
+  },
+  "States": {
+    "loading": "Loading products…",
+    "errorTitle": "Couldn't load products",
+    "errorBody": "The store service didn't respond. Please try again.",
+    "retry": "Try again",
+    "emptyTitle": "No products found",
+    "emptyBody": "Try a different search or category."
+  },
+  "Pagination": {
+    "label": "Product pages",
+    "previous": "Previous page",
+    "next": "Next page",
+    "page": "Page {page}"
   }
 }
