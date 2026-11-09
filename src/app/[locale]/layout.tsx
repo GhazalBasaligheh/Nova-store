@@ -4,8 +4,10 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import localFont from 'next/font/local';
 import StyledComponentsRegistry from '@/context/StyledComponentsRegistry';
-import AppThemeProvider from '@/context/theme/AppThemeProvider';
+import { cookies } from 'next/headers';
+import { ThemeContextProvider } from '@/context/ThemeContext';
 import { localeDirection, routing } from '@/i18n/routing';
+import { parseTheme, THEME_COOKIE } from '@/utils/theme';
 import '../globals.css';
 
 // Self-hosted Vazirmatn variable font: covers Persian, Latin and both digit sets.
@@ -35,16 +37,23 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
 
-  // Enables static rendering for this locale.
   setRequestLocale(locale);
 
+  // Server-side theme read: correct colors on first paint, no flash or hydration mismatch.
+  const theme = parseTheme((await cookies()).get(THEME_COOKIE)?.value);
+
   return (
-    <html lang={locale} dir={localeDirection[locale]} className={vazirmatn.variable}>
+    <html
+      lang={locale}
+      dir={localeDirection[locale]}
+      className={vazirmatn.variable}
+      data-theme={theme}
+    >
       <body>
         <StyledComponentsRegistry>
-          <AppThemeProvider>
+          <ThemeContextProvider initialTheme={theme}>
             <NextIntlClientProvider>{children}</NextIntlClientProvider>
-          </AppThemeProvider>
+          </ThemeContextProvider>
         </StyledComponentsRegistry>
       </body>
     </html>
