@@ -11,6 +11,7 @@ import { StatePanel } from '@/shared/StatePanel';
 import type { ServerCatalogResult } from '@/types/catalog';
 import { filterSortPaginate } from '@/utils/productQuery';
 import { PRODUCTS_ANCHOR } from '@/utils/routes';
+import { AddToCartButton } from './AddToCartButton';
 import { CategoryChips } from './CategoryChips';
 import { ProductGrid, ProductGridSkeleton } from './ProductGrid';
 import { ProductToolbar } from './ProductToolbar';
@@ -93,7 +94,10 @@ export function ProductSection({ server }: ProductSectionProps) {
                 />
               ) : (
                 <>
-                  <ProductGrid products={result.items} />
+                  <ProductGrid
+                    products={result.items}
+                    renderAction={(product) => <AddToCartButton product={product} />}
+                  />
                   <Pagination
                     page={result.page}
                     totalPages={result.totalPages}

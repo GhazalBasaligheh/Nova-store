@@ -66,7 +66,6 @@
     "results": "{count, plural, =0 {محصولی یافت نشد} other {# محصول}}",
     "sortLabel": "مرتب‌سازی",
     "clearFilters": "پاک کردن فیلترها",
-    "addToCart": "افزودن به سبد",
     "ratingLabel": "امتیاز {rate} از ۵ بر اساس {count} نظر"
   },
   "Sort": {
@@ -103,5 +102,33 @@
       "required": "لطفاً ایمیل خود را وارد کنید.",
       "invalid": "لطفاً یک ایمیل معتبر وارد کنید."
     }
+  },
+  "Cart": {
+    "title": "سبد خرید شما",
+    "metaDescription": "کالاهای سبد خرید نوا را مرور کنید.",
+    "loading": "در حال بارگذاری سبد خرید…",
+    "emptyTitle": "سبد خرید شما خالی است",
+    "emptyBody": "محصولات را ببینید و هر چه دوست دارید اضافه کنید.",
+    "browse": "مشاهده محصولات",
+    "product": "محصول",
+    "unitPrice": "قیمت واحد",
+    "quantity": "تعداد",
+    "rowTotal": "جمع",
+    "remove": "حذف",
+    "removeItem": "حذف {title} از سبد",
+    "clear": "خالی کردن سبد",
+    "summary": "خلاصه سفارش",
+    "items": "{count, plural, other {# کالا}}",
+    "subtotal": "جمع جزء",
+    "total": "مبلغ کل",
+    "decrease": "کاهش تعداد",
+    "increase": "افزایش تعداد",
+    "quantityOf": "تعداد {title}",
+    "checkoutNote": "پرداخت و ثبت سفارش بخشی از این نسخه نمایشی نیست."
+  },
+  "AddToCart": {
+    "add": "افزودن به سبد",
+    "added": "به سبد اضافه شد",
+    "addItem": "افزودن {title} به سبد"
   }
 }

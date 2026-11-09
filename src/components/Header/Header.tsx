@@ -1,11 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useFormatter, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { BagIcon, CartIcon, CloseIcon, MenuIcon } from '@/assets/Icons';
 import { Link } from '@/i18n/navigation';
 import { CountBadge } from '@/shared/Badge';
+import { selectItemCount, useCartStore } from '@/storage/cartStore';
+import { useCartHydrated } from '@/storage/useCartHydration';
 import { IconButton } from '@/shared/Button';
 import { Container } from '@/shared/Container';
 import { PRODUCTS_ANCHOR, routes } from '@/utils/routes';
@@ -118,14 +120,14 @@ const MenuButton = styled(IconButton)`
   }
 `;
 
-interface HeaderProps {
-  // Cart count is wired to the Zustand store in the cart step.
-  cartCount?: number;
-}
-
-export function Header({ cartCount = 0 }: HeaderProps) {
+export function Header() {
   const t = useTranslations();
   const [menuOpen, setMenuOpen] = useState(false);
+  const format = useFormatter();
+  const hydrated = useCartHydrated();
+  const storedCount = useCartStore(selectItemCount);
+  // Server and first client render show no count; the persisted value appears after hydration.
+  const cartCount = hydrated ? storedCount : 0;
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -172,7 +174,9 @@ export function Header({ cartCount = 0 }: HeaderProps) {
               aria-label={t('Header.cartWithCount', { count: cartCount })}
             >
               <CartIcon size={22} />
-              {cartCount > 0 && <CountBadge aria-hidden="true">{cartCount}</CountBadge>}
+              {cartCount > 0 && (
+                <CountBadge aria-hidden="true">{format.number(cartCount)}</CountBadge>
+              )}
             </CartLink>
             <MenuButton
               type="button"
