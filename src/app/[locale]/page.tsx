@@ -2,6 +2,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
+import { Container } from '@/shared/Container';
 
 export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const { locale } = await params;
@@ -12,7 +13,9 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
 
   return (
     <main>
-      <h1>{t('title')}</h1>
+      <Container>
+        <h1>{t('title')}</h1>
+      </Container>
     </main>
   );
 }
