@@ -4,6 +4,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { CartView } from '@/components/Cart/CartView';
 import { routing } from '@/i18n/routing';
+import { routes } from '@/utils/routes';
+import { alternatesFor } from '@/utils/seo';
 
 export async function generateMetadata({ params }: PageProps<'/[locale]/cart'>): Promise<Metadata> {
   const { locale } = await params;
@@ -15,6 +17,7 @@ export async function generateMetadata({ params }: PageProps<'/[locale]/cart'>):
     description: t('metaDescription'),
     // Personal, per-browser content: nothing to index.
     robots: { index: false, follow: true },
+    alternates: alternatesFor(routes.cart, locale),
   };
 }
 
