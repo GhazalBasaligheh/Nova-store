@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer/Footer';
 import { Header } from '@/components/Header/Header';
 import StyledComponentsRegistry from '@/context/StyledComponentsRegistry';
 import { cookies } from 'next/headers';
+import { CartHydrator } from '@/storage/useCartHydration';
 import { ThemeContextProvider } from '@/context/ThemeContext';
 import { localeDirection, routing } from '@/i18n/routing';
 import { parseTheme, THEME_COOKIE } from '@/utils/theme';
@@ -55,6 +56,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
         <StyledComponentsRegistry>
           <ThemeContextProvider initialTheme={theme}>
             <NextIntlClientProvider>
+              <CartHydrator />
               <Header />
               {children}
               <Footer />
