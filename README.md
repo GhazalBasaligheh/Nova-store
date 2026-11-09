@@ -4,7 +4,7 @@ The public storefront of the NOVA online store, built for the NOVA Frontend (UI)
 It is a bilingual (Persian RTL / English LTR) Next.js App Router app with light and dark themes, a client-side
 filterable product catalog, and a persistent cart, backed by [FakeStoreAPI](https://fakestoreapi.com).
 
-The companion admin panel lives in a separate repository (NOVA Admin).
+The companion admin panel lives in a separate repository: [NOVA Admin](https://github.com/GhazalBasaligheh/Nova-admin).
 
 ## Contents
 
