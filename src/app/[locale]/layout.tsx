@@ -10,6 +10,8 @@ import { cookies } from 'next/headers';
 import { CartHydrator } from '@/storage/useCartHydration';
 import { ThemeContextProvider } from '@/context/ThemeContext';
 import { localeDirection, routing } from '@/i18n/routing';
+import { env } from '@/utils/env';
+import { baseOpenGraph } from '@/utils/seo';
 import { parseTheme, THEME_COOKIE } from '@/utils/theme';
 import '../globals.css';
 
@@ -31,8 +33,11 @@ export async function generateMetadata({ params }: LayoutProps<'/[locale]'>): Pr
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return {
-    title: t('title'),
+    metadataBase: new URL(env.siteUrl),
+    title: { default: t('title'), template: `%s | ${t('title')}` },
     description: t('description'),
+    applicationName: t('title'),
+    openGraph: baseOpenGraph(locale, t('title'), t('description')),
   };
 }
 
