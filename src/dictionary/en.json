@@ -5,5 +5,8 @@
   },
   "HomePage": {
     "title": "Welcome to NOVA"
+  },
+  "Currency": {
+    "toman": "Toman"
   }
 }
