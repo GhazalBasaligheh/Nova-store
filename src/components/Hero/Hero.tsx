@@ -23,6 +23,11 @@ const Panel = styled.div`
   border-radius: ${({ theme }) => theme.radius.lg};
   background: ${({ theme }) => theme.colors.surfaceMuted};
 
+  /* Two columns from tablet up, so the artwork never stacks as a tall block above the products. */
+  ${({ theme }) => theme.media.tablet} {
+    grid-template-columns: 1.4fr 1fr;
+  }
+
   ${({ theme }) => theme.media.desktop} {
     grid-template-columns: 1.2fr 1fr;
     padding: ${({ theme }) => theme.spacing.xxl};
