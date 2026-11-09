@@ -8,5 +8,45 @@
   },
   "Currency": {
     "toman": "تومان"
+  },
+  "Brand": {
+    "name": "نوا",
+    "homeLink": "صفحه اصلی نوا"
+  },
+  "Header": {
+    "home": "خانه",
+    "products": "محصولات",
+    "cart": "سبد خرید",
+    "mainNav": "منوی اصلی",
+    "searchLabel": "جستجوی محصولات",
+    "searchPlaceholder": "جستجوی محصولات…",
+    "searchSubmit": "جستجو",
+    "openMenu": "باز کردن منو",
+    "closeMenu": "بستن منو",
+    "switchToDark": "تغییر به تم تیره",
+    "switchToLight": "تغییر به تم روشن",
+    "switchLanguage": "تغییر زبان",
+    "cartWithCount": "سبد خرید، {count, plural, =0 {خالی} other {# کالا}}"
+  },
+  "Languages": {
+    "fa": "فارسی",
+    "en": "English"
+  },
+  "Footer": {
+    "tagline": "خریدی ساده و مدرن برای نیازهای روزمره.",
+    "help": "راهنما",
+    "faq": "سؤالات متداول",
+    "shipping": "ارسال",
+    "returns": "مرجوعی",
+    "contact": "تماس با ما",
+    "storeInfo": "فروشگاه",
+    "about": "درباره نوا",
+    "address": "تهران، ایران",
+    "hours": "پشتیبانی: شنبه تا چهارشنبه، ۹ تا ۱۷",
+    "social": "ما را دنبال کنید",
+    "instagram": "اینستاگرام",
+    "telegram": "تلگرام",
+    "linkedin": "لینکدین",
+    "copyright": "© {year} نوا. تمامی حقوق محفوظ است."
   }
 }

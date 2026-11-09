@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import localFont from 'next/font/local';
+import { Footer } from '@/components/Footer/Footer';
+import { Header } from '@/components/Header/Header';
 import StyledComponentsRegistry from '@/context/StyledComponentsRegistry';
 import { cookies } from 'next/headers';
 import { ThemeContextProvider } from '@/context/ThemeContext';
@@ -52,7 +54,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
       <body>
         <StyledComponentsRegistry>
           <ThemeContextProvider initialTheme={theme}>
-            <NextIntlClientProvider>{children}</NextIntlClientProvider>
+            <NextIntlClientProvider>
+              <Header />
+              {children}
+              <Footer />
+            </NextIntlClientProvider>
           </ThemeContextProvider>
         </StyledComponentsRegistry>
       </body>
