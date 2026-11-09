@@ -8,5 +8,45 @@
   },
   "Currency": {
     "toman": "Toman"
+  },
+  "Brand": {
+    "name": "NOVA",
+    "homeLink": "NOVA home"
+  },
+  "Header": {
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "mainNav": "Main navigation",
+    "searchLabel": "Search products",
+    "searchPlaceholder": "Search products…",
+    "searchSubmit": "Search",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchToDark": "Switch to dark theme",
+    "switchToLight": "Switch to light theme",
+    "switchLanguage": "Switch language",
+    "cartWithCount": "Cart, {count, plural, =0 {empty} one {# item} other {# items}}"
+  },
+  "Languages": {
+    "fa": "فارسی",
+    "en": "English"
+  },
+  "Footer": {
+    "tagline": "Simple, modern shopping for everyday essentials.",
+    "help": "Help",
+    "faq": "FAQ",
+    "shipping": "Shipping",
+    "returns": "Returns",
+    "contact": "Contact us",
+    "storeInfo": "Store",
+    "about": "About NOVA",
+    "address": "Tehran, Iran",
+    "hours": "Support: Sat–Wed, 9:00–17:00",
+    "social": "Follow us",
+    "instagram": "Instagram",
+    "telegram": "Telegram",
+    "linkedin": "LinkedIn",
+    "copyright": "© {year} NOVA. All rights reserved."
   }
 }

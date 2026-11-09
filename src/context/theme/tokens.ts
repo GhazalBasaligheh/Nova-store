@@ -19,6 +19,8 @@ export interface Palette {
   text: string;
   textMuted: string;
   primary: string;
+  header: string;
+  onHeader: string;
   onPrimary: string;
   accent: string;
   accentHover: string;
@@ -35,6 +37,8 @@ export const lightPalette: Palette = {
   text: navy[900],
   textMuted: '#5B6478',
   primary: navy[800],
+  header: navy[800],
+  onHeader: '#FFFFFF',
   onPrimary: '#FFFFFF',
   accent: orange[500],
   accentHover: orange[600],
@@ -51,6 +55,8 @@ export const darkPalette: Palette = {
   text: '#E8ECF5',
   textMuted: '#A3ACC2',
   primary: '#E8ECF5',
+  header: '#0E1630',
+  onHeader: '#E8ECF5',
   onPrimary: navy[900],
   accent: orange[500],
   accentHover: '#FB923C',
