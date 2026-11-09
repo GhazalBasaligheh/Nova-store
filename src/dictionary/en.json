@@ -90,5 +90,18 @@
     "previous": "Previous page",
     "next": "Next page",
     "page": "Page {page}"
+  },
+  "Newsletter": {
+    "heading": "Stay in touch",
+    "body": "Get new arrivals and offers in your inbox. No spam.",
+    "emailLabel": "Email address",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Subscribe",
+    "submitting": "Subscribing…",
+    "success": "Thanks! You're subscribed.",
+    "errors": {
+      "required": "Please enter your email.",
+      "invalid": "Please enter a valid email address."
+    }
   }
 }

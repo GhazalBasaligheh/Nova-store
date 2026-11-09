@@ -2,6 +2,7 @@ import { hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Hero } from '@/components/Hero/Hero';
+import { Newsletter } from '@/components/Newsletter/Newsletter';
 import { ProductSection } from '@/components/ProductSection/ProductSection';
 import { routing } from '@/i18n/routing';
 import { loadCatalogOnServer } from '@/requests/catalogServer';
@@ -18,6 +19,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
     <main>
       <Hero />
       <ProductSection server={catalog} />
+      <Newsletter />
     </main>
   );
 }
