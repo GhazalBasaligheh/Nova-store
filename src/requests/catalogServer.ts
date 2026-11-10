@@ -1,4 +1,6 @@
-// Server-only: imported by the home page server component, never by client code.
+// Server-only: imported by the home page server component. The import below turns an
+// accidental client import into a build error instead of shipping the cache to the browser.
+import 'server-only';
 import { shouldFallbackToClient } from '@/api/ApiError';
 import { fetchCatalog } from '@/requests/products';
 import type { Catalog, ServerCatalogResult } from '@/types/catalog';
