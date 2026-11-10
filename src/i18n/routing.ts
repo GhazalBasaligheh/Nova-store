@@ -6,7 +6,7 @@ export const routing = defineRouting({
   defaultLocale: Locale.Fa,
   // Persian at "/", English at "/en".
   localePrefix: 'as-needed',
-  // No Accept-Language redirect: "/" is always Persian; users switch via the header toggle.
+  // "/" is always Persian
   localeDetection: false,
 });
 
