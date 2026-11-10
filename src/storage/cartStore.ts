@@ -5,7 +5,7 @@ import type { Product } from '@/types/product';
 export interface CartItem {
   id: number;
   title: string;
-  /** USD — converted only at render time. */
+  /** USD */
   price: number;
   image: string;
   quantity: number;

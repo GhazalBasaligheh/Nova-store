@@ -4,7 +4,7 @@ import { ApiErrorKind } from '@/types/enums/ApiErrorKind';
 import type { Catalog } from '@/types/catalog';
 import type { Category, Product } from '@/types/product';
 
-// Lightweight runtime guard: the API is third-party, so don't trust the shape blindly.
+// The API is third-party, so don't trust it blindly.
 function assertArray<T>(data: unknown, what: string): T[] {
   if (!Array.isArray(data)) throw new ApiError(ApiErrorKind.Parse, `Expected ${what} array`);
   return data as T[];
@@ -20,7 +20,7 @@ export async function getCategories(signal?: AbortSignal): Promise<Category[]> {
   return assertArray<Category>(data, 'categories');
 }
 
-// Products and categories together: what the home page needs.
+// Products and categories together: for home page .
 export async function fetchCatalog(signal?: AbortSignal): Promise<Catalog> {
   const [products, categories] = await Promise.all([getProducts(signal), getCategories(signal)]);
   return { products, categories };

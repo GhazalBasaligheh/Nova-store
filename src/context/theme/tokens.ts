@@ -1,5 +1,3 @@
-// Design tokens: the single source of visual values. Copied deliberately to NOVA Admin.
-
 const navy = {
   900: '#0B1530',
   800: '#13214A',
