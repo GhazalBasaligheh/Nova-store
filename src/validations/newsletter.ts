@@ -1,13 +1,8 @@
 import { object, string, type InferType } from 'yup';
+import { NewsletterError } from '@/types/enums/NewsletterError';
 
 // Messages are dictionary keys (under Newsletter.errors), translated in the component,
 // so the schema stays locale-independent.
-export const NewsletterError = {
-  Required: 'required',
-  Invalid: 'invalid',
-} as const;
-
-export type NewsletterErrorKey = (typeof NewsletterError)[keyof typeof NewsletterError];
 
 export const newsletterSchema = object({
   email: string()
