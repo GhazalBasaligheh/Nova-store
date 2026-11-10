@@ -6,7 +6,7 @@ import { ChevronDownIcon } from '@/assets/Icons';
 import { useCategoryLabel } from '@/components/ProductSection/useCategoryLabel';
 import { Link } from '@/i18n/navigation';
 import { KNOWN_CATEGORIES } from '@/utils/categories';
-import { QueryParam } from '@/utils/productQuery';
+import { QueryParam } from '@/types/enums/QueryParam';
 import { PRODUCTS_ANCHOR, routes } from '@/utils/routes';
 
 // Native <details> disclosure: keyboard- and screen-reader-friendly with no extra JS.

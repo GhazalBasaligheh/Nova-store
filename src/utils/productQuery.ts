@@ -1,3 +1,4 @@
+import { QueryParam } from '@/types/enums/QueryParam';
 import { SortKey } from '@/types/enums/SortKey';
 import type { Product } from '@/types/product';
 
@@ -8,13 +9,6 @@ export interface ProductQuery {
   category: string | null;
   sort: SortKey;
   page: number;
-}
-
-export enum QueryParam {
-  Search = 'q',
-  Category = 'category',
-  Sort = 'sort',
-  Page = 'page',
 }
 
 type ParamReader = { get(name: string): string | null };

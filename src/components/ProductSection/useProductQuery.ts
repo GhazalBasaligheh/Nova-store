@@ -4,7 +4,8 @@ import { useSearchParams } from 'next/navigation';
 import { useCallback, useMemo } from 'react';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { SortKey } from '@/types/enums/SortKey';
-import { parseProductQuery, QueryParam } from '@/utils/productQuery';
+import { QueryParam } from '@/types/enums/QueryParam';
+import { parseProductQuery } from '@/utils/productQuery';
 
 // List state lives in the URL (shareable, survives refresh, back/forward work).
 export function useProductQuery() {

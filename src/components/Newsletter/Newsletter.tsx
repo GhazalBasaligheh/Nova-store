@@ -6,11 +6,8 @@ import { useId } from 'react';
 import styled from 'styled-components';
 import { Button } from '@/shared/Button';
 import { Container } from '@/shared/Container';
-import {
-  newsletterSchema,
-  type NewsletterErrorKey,
-  type NewsletterValues,
-} from '@/validations/newsletter';
+import type { NewsletterError } from '@/types/enums/NewsletterError';
+import { newsletterSchema, type NewsletterValues } from '@/validations/newsletter';
 
 const Section = styled.section`
   padding-block: ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.xxl};
@@ -139,7 +136,7 @@ export function Newsletter() {
             </Row>
             {error && (
               <ErrorText id={errorId} role="alert">
-                {t(`errors.${error as NewsletterErrorKey}`)}
+                {t(`errors.${error as NewsletterError}`)}
               </ErrorText>
             )}
             <div aria-live="polite">{succeeded && <SuccessText>{t('success')}</SuccessText>}</div>
