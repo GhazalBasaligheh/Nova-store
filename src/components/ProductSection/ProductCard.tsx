@@ -45,7 +45,6 @@ const CategoryText = styled.p`
   color: ${({ theme }) => theme.colors.textMuted};
 `;
 
-// API titles are English; mark them so screen readers pronounce them correctly in the fa locale.
 const Title = styled.h3`
   display: -webkit-box;
   min-height: calc(2 * 1.5em);

@@ -4,7 +4,6 @@ import { routes } from '@/utils/routes';
 import { absoluteUrl, localizedPath } from '@/utils/seo';
 
 // Public, indexable routes only (the cart is per-browser and noindex).
-// Product detail pages would be added here if that backlog item is built.
 const INDEXABLE_ROUTES = [routes.home];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -15,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return routing.locales.map((locale) => ({
       url: absoluteUrl(localizedPath(href, locale)),
+      // Although it's mostly dropped/ignored by most search engines
       changeFrequency: 'daily' as const,
       priority: href === routes.home ? 1 : 0.7,
       alternates: { languages },

@@ -1,4 +1,4 @@
-// Typed access to public env vars. NEXT_PUBLIC_* must be read with literal property names
+// Typed access to public env vars
 
 function required(name: string, value: string | undefined): string {
   if (!value) throw new Error(`Missing environment variable ${name}. See .env.example.`);
@@ -13,6 +13,7 @@ function positiveNumber(name: string, value: string | undefined): number {
   return parsed;
 }
 
+//Avoid dynamic env access like process.env[name]
 export const env = {
   apiBaseUrl: required('NEXT_PUBLIC_API_BASE_URL', process.env.NEXT_PUBLIC_API_BASE_URL),
   siteUrl: required('NEXT_PUBLIC_SITE_URL', process.env.NEXT_PUBLIC_SITE_URL),

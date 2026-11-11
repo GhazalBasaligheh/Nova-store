@@ -99,8 +99,6 @@ npm run start
 | `NEXT_PUBLIC_SITE_URL`          | آدرس اصلی سایت برای متادیتا، sitemap و robots                                 | `http://localhost:3000`    |
 | `NEXT_PUBLIC_USD_TO_TOMAN_RATE` | نرخ ثابت **فقط برای نمایش آزمایشی** دلار به تومان (بخش [واحد پول](#واحد-پول)) | `200000`                   |
 
-مقدار `NEXT_PUBLIC_SITE_URL` تا زمان استقرار یک مقدار موقت است؛ آن را روی آدرس واقعی تنظیم کنید تا آدرس‌های canonical،
-آدرس‌های Open Graph و sitemap درست باشند.
 
 ## اسکریپت‌ها
 

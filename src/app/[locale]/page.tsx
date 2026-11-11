@@ -10,7 +10,7 @@ import { loadCatalogOnServer } from '@/requests/catalogServer';
 import { alternatesFor, baseOpenGraph, localizedPath } from '@/utils/seo';
 import { routes } from '@/utils/routes';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps<'/[locale]'>): Promise<Metadata> {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const t = await getTranslations({ locale, namespace: 'Metadata' });
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);

@@ -54,6 +54,7 @@ export function filterSortPaginate(
 
   const filtered = products.filter(
     (product) =>
+      // !x || condition is a common pattern for ignoring an empty filter
       (!query.category || product.category === query.category) &&
       (!needle ||
         product.title.toLowerCase().includes(needle) ||
@@ -61,8 +62,10 @@ export function filterSortPaginate(
   );
 
   const compare = comparators[query.sort];
+  //avoid altering the original array by sort()
   const sorted = compare ? [...filtered].sort(compare) : filtered;
 
+  //Pagination
   const totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
   const page = Math.min(query.page, totalPages);
   const start = (page - 1) * pageSize;

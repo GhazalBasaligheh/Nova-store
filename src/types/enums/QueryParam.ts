@@ -1,4 +1,4 @@
-// URL query parameter names for the product list (one place for the parser and the writers).
+//These are used in the query string and in the `ProductQuery` type. 
 export enum QueryParam {
   Search = 'q',
   Category = 'category',
