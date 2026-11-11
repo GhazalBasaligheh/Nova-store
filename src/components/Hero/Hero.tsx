@@ -1,10 +1,10 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { BagIcon } from '@/assets/Icons';
+import heroImage from '@/assets/Images/hero.png';
 import { Container } from '@/shared/ui/Container';
 import { PRODUCTS_ANCHOR, routes } from '@/utils/routes';
-import { Wrapper, Panel, Copy, Eyebrow, Title, Subtitle, Cta, Art } from './Hero.styles';
+import { Wrapper, Panel, Copy, Eyebrow, Title, Subtitle, Cta, Art, Photo } from './Hero.styles';
 
 export function Hero() {
   const t = useTranslations('Hero');
@@ -19,8 +19,8 @@ export function Hero() {
             <Subtitle>{t('subtitle')}</Subtitle>
             <Cta href={{ pathname: routes.home, hash: PRODUCTS_ANCHOR }}>{t('cta')}</Cta>
           </Copy>
-          <Art aria-hidden="true">
-            <BagIcon size={140} />
+          <Art>
+            <Photo src={heroImage} alt="" priority sizes="(min-width: 1024px) 480px, 40vw" />
           </Art>
         </Panel>
       </Container>

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import styled from 'styled-components';
 import { Link } from '@/i18n/navigation';
 
@@ -74,18 +75,22 @@ export const Cta = styled(Link)`
   }
 `;
 
-// Decorative brand artwork (no photo asset is provided with the brief).
+// Decorative photo: object-position keeps the crop above the watermark in the corner.
 export const Art = styled.div`
   display: none;
-  place-items: center;
+  position: relative;
+  overflow: hidden;
   aspect-ratio: 4 / 3;
   border-radius: ${({ theme }) => theme.radius.lg};
-  background:
-    radial-gradient(circle at 30% 30%, rgb(249 115 22 / 35%), transparent 55%),
-    ${({ theme }) => theme.colors.header};
-  color: ${({ theme }) => theme.colors.accent};
 
   ${({ theme }) => theme.media.tablet} {
-    display: grid;
+    display: block;
   }
+`;
+
+export const Photo = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 78%;
 `;
