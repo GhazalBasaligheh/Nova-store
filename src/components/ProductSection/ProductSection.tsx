@@ -2,7 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 import { useMemo, useTransition } from 'react';
-import styled from 'styled-components';
 import { AlertIcon, SearchIcon } from '@/assets/Icons';
 import { Button } from '@/shared/Button';
 import { Container } from '@/shared/Container';
@@ -18,24 +17,7 @@ import { ProductGrid, ProductGridSkeleton } from './ProductGrid';
 import { ProductToolbar } from './ProductToolbar';
 import { useProductQuery } from './useProductQuery';
 import { useRouter } from '@/i18n/navigation';
-
-const Section = styled.section`
-  padding-block: ${({ theme }) => theme.spacing.xxl};
-  scroll-margin-block-start: 120px;
-`;
-
-const Stack = styled.div`
-  display: grid;
-  gap: ${({ theme }) => theme.spacing.lg};
-`;
-
-const Heading = styled.h2`
-  font-size: 24px;
-
-  ${({ theme }) => theme.media.desktop} {
-    font-size: 28px;
-  }
-`;
+import { Section, Stack, Heading } from './ProductSection.styles';
 
 interface ProductSectionProps {
   server: ServerCatalogResult;

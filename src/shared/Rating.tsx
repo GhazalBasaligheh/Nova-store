@@ -1,21 +1,8 @@
 'use client';
 
 import { useFormatter, useTranslations } from 'next-intl';
-import styled from 'styled-components';
 import { StarIcon } from '@/assets/Icons';
-
-const Wrapper = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  color: ${({ theme }) => theme.colors.textMuted};
-`;
-
-const Stars = styled.span`
-  display: inline-flex;
-  color: ${({ theme }) => theme.colors.accent};
-`;
+import { Wrapper, Stars } from './Rating.styles';
 
 interface RatingProps {
   rate: number;
