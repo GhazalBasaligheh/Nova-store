@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { useCallback } from 'react';
-import { getCategoryLabelKey } from '@/utils/categories';
+import { getCategoryLabelKey } from '@/utils/categoryLabels';
 
 // Localized label for a category slug; unknown slugs (if the API adds one) show as-is.
 export function useCategoryLabel() {

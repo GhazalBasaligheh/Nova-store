@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import styled from 'styled-components';
 import { Skeleton } from '@/shared/Skeleton';
 import type { Product } from '@/types/product';
-import { PAGE_SIZE } from '@/utils/productQuery';
+import { PAGE_SIZE } from '@/utils/filterSortPaginate';
 import { Card, Media, ProductCard } from './ProductCard';
 
 // Equal-size cards: 1 column on small phones, 2 from 480px, 3 on desktop.

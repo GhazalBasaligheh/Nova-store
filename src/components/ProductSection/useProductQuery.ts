@@ -5,7 +5,7 @@ import { useCallback, useMemo } from 'react';
 import { usePathname, useRouter } from '@/i18n/navigation';
 import { SortKey } from '@/types/enums/SortKey';
 import { QueryParam } from '@/types/enums/QueryParam';
-import { parseProductQuery } from '@/utils/productQuery';
+import { parseProductQuery } from '@/utils/parseProductQuery';
 
 // List state lives in the URL, so it is shareable and survives a refresh.
 export function useProductQuery() {

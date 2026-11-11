@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Rating } from '@/shared/Rating';
 import type { Locale } from '@/types/enums/Locale';
 import type { Product } from '@/types/product';
-import { formatPrice } from '@/utils/currency';
+import { formatPrice } from '@/utils/formatPrice';
 import { useCategoryLabel } from './useCategoryLabel';
 
 export const Card = styled.article`

@@ -12,7 +12,7 @@ import { ThemeContextProvider } from '@/context/ThemeContext';
 import { localeDirection, routing } from '@/i18n/routing';
 import { env } from '@/utils/env';
 import { baseOpenGraph } from '@/utils/seo';
-import { parseTheme, THEME_COOKIE } from '@/utils/theme';
+import { parseTheme, THEME_COOKIE } from '@/utils/themeCookie';
 import '../globals.css';
 
 // Self-hosted Vazirmatn variable font: covers Persian, Latin and both digit sets.
