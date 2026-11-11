@@ -3,7 +3,7 @@ import { getRequestConfig } from 'next-intl/server';
 import { locale as rootLocale } from 'next/root-params';
 import { routing } from '@/i18n/routing';
 
-// Per-request i18n config (the file location the challenge brief specifies).
+// Per-request i18n config
 // `locale` is set when a caller passes one explicitly, e.g. getTranslations({ locale }).
 // Otherwise the [locale] segment is read with next/root-params.
 export default getRequestConfig(async ({ locale: explicitLocale }) => {
