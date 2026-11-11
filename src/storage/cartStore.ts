@@ -45,6 +45,7 @@ export const useCartStore = create<CartState>()(
     }),
     {
       name: 'nova-cart',
+      // Bump when CartItem changes shape, so carts saved by an older version can be migrated.
       version: 1,
       // Cart contents are not sensitive, so localStorage is acceptable
       storage: createJSONStorage(() => localStorage),
