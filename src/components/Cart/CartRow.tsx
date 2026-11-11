@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { CloseIcon } from '@/assets/Icons';
-import { QuantityStepper } from '@/shared/QuantityStepper';
+import { QuantityStepper } from '@/shared/ui/QuantityStepper';
 import { useCartStore, type CartItem } from '@/storage/cartStore';
-import { usePrice } from './usePrice';
+import { usePrice } from '@/shared/hooks/usePrice';
 import {
   RowGrid,
   Thumb,

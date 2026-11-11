@@ -2,9 +2,9 @@
 
 import { useTranslations } from 'next-intl';
 import { AlertIcon } from '@/assets/Icons';
-import { Button } from '@/shared/Button';
-import { Container } from '@/shared/Container';
-import { StatePanel } from '@/shared/StatePanel';
+import { Button } from '@/shared/ui/Button';
+import { Container } from '@/shared/ui/Container';
+import { StatePanel } from '@/shared/ui/StatePanel';
 import { Main } from './error.styles';
 
 // Error boundary for every page in a locale: an unexpected rendering error shows this

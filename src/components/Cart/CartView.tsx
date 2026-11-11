@@ -2,16 +2,16 @@
 
 import { useTranslations } from 'next-intl';
 import { CartIcon } from '@/assets/Icons';
-import { Button } from '@/shared/Button';
-import { Container } from '@/shared/Container';
-import { Skeleton } from '@/shared/Skeleton';
-import { StatePanel } from '@/shared/StatePanel';
+import { Button } from '@/shared/ui/Button';
+import { Container } from '@/shared/ui/Container';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { StatePanel } from '@/shared/ui/StatePanel';
 import { selectItemCount, selectSubtotal, useCartStore } from '@/storage/cartStore';
 import { useCartHydrated } from '@/storage/useCartHydration';
 import { PRODUCTS_ANCHOR, routes } from '@/utils/routes';
 import { CartRow } from './CartRow';
 import { RowGrid } from './CartRow.styles';
-import { usePrice } from './usePrice';
+import { usePrice } from '@/shared/hooks/usePrice';
 import {
   Main,
   Heading,

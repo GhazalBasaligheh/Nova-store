@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from 'react';
 import { CartIcon } from '@/assets/Icons';
-import { Button } from '@/shared/Button';
+import { Button } from '@/shared/ui/Button';
 import { useCartStore } from '@/storage/cartStore';
 import type { Product } from '@/types/product';
 

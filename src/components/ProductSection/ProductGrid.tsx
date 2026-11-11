@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Skeleton } from '@/shared/Skeleton';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import type { Product } from '@/types/product';
 import { PAGE_SIZE } from '@/utils/filterSortPaginate';
 import { ProductCard } from './ProductCard';

@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { ChevronDownIcon } from '@/assets/Icons';
-import { useCategoryLabel } from '@/components/ProductSection/useCategoryLabel';
+import { useCategoryLabel } from '@/shared/hooks/useCategoryLabel';
 import { Link } from '@/i18n/navigation';
 import { KNOWN_CATEGORIES } from '@/utils/categoryLabels';
 import { QueryParam } from '@/types/enums/QueryParam';

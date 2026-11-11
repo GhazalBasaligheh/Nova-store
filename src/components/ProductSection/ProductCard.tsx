@@ -1,12 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import { useLocale, useTranslations } from 'next-intl';
-import { Rating } from '@/shared/Rating';
-import type { Locale } from '@/types/enums/Locale';
+import { Rating } from '@/shared/ui/Rating';
 import type { Product } from '@/types/product';
-import { formatPrice } from '@/utils/formatPrice';
-import { useCategoryLabel } from './useCategoryLabel';
+import { useCategoryLabel } from '@/shared/hooks/useCategoryLabel';
+import { usePrice } from '@/shared/hooks/usePrice';
 import { Card, Media, Body, CategoryText, Title, Footer, Price } from './ProductCard.styles';
 
 interface ProductCardProps {
@@ -17,8 +15,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, action, priority = false }: ProductCardProps) {
-  const locale = useLocale() as Locale;
-  const t = useTranslations('Currency');
+  const price = usePrice();
   const categoryLabel = useCategoryLabel();
 
   return (
@@ -39,7 +36,7 @@ export function ProductCard({ product, action, priority = false }: ProductCardPr
         </Title>
         <Rating rate={product.rating.rate} count={product.rating.count} />
         <Footer>
-          <Price>{formatPrice(product.price, locale, t('toman'))}</Price>
+          <Price>{price(product.price)}</Price>
           {action}
         </Footer>
       </Body>

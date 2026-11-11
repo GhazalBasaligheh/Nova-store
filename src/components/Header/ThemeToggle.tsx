@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { MoonIcon, SunIcon } from '@/assets/Icons';
 import { useTheme } from '@/context/ThemeContext';
-import { IconButton } from '@/shared/Button';
+import { IconButton } from '@/shared/ui/Button';
 import { Theme } from '@/types/enums/Theme';
 
 export function ThemeToggle() {
