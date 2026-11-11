@@ -7,6 +7,4 @@ export enum ApiErrorKind {
   Client = 'client',
   // Response arrived but did not have the expected shape (including a non-JSON body).
   Parse = 'parse',
-  // Request aborted by the caller.
-  Canceled = 'canceled',
 }

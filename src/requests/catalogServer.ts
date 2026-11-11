@@ -1,8 +1,7 @@
 /**
  * Server-side catalog load for the home page.
- * - Cached success is served for 1 hour.
- * - It starts a 5-minute cooldown in which the server skips the API
- * - Any other failure (4xx, malformed data) is an error; a browser retry wouldn't help.
+ * - A successful result is cached in memory for 1 hour.
+ * - A failure is returned as an error and never cached, so the next request tries again.
  */
 
 import 'server-only';

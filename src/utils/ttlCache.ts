@@ -10,12 +10,12 @@ export function createTtlCache<T>() {
   let entry: Entry<T> | null = null;
 
   return {
-    get(now: number = Date.now()): T | null {
-      if (!entry || entry.expiresAt <= now) return null;
+    get(): T | null {
+      if (!entry || entry.expiresAt <= Date.now()) return null;
       return entry.value;
     },
-    set(value: T, ttlMs: number, now: number = Date.now()): void {
-      entry = { value, expiresAt: now + ttlMs };
+    set(value: T, ttlMs: number): void {
+      entry = { value, expiresAt: Date.now() + ttlMs };
     },
   };
 }

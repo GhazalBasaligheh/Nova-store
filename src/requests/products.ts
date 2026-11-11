@@ -10,18 +10,18 @@ function assertArray<T>(data: unknown, what: string): T[] {
   return data as T[];
 }
 
-export async function getProducts(signal?: AbortSignal): Promise<Product[]> {
-  const { data } = await axiosInstance.get<unknown>('/products', { signal });
+export async function getProducts(): Promise<Product[]> {
+  const { data } = await axiosInstance.get<unknown>('/products');
   return assertArray<Product>(data, 'products');
 }
 
-export async function getCategories(signal?: AbortSignal): Promise<Category[]> {
-  const { data } = await axiosInstance.get<unknown>('/products/categories', { signal });
+export async function getCategories(): Promise<Category[]> {
+  const { data } = await axiosInstance.get<unknown>('/products/categories');
   return assertArray<Category>(data, 'categories');
 }
 
 // Products and categories together: for home page .
-export async function fetchCatalog(signal?: AbortSignal): Promise<Catalog> {
-  const [products, categories] = await Promise.all([getProducts(signal), getCategories(signal)]);
+export async function fetchCatalog(): Promise<Catalog> {
+  const [products, categories] = await Promise.all([getProducts(), getCategories()]);
   return { products, categories };
 }
