@@ -19,8 +19,6 @@ function isJson(response: AxiosResponse): boolean {
 function toApiError(error: unknown): ApiError {
   if (error instanceof ApiError) return error;
 
-  if (axios.isCancel(error)) return new ApiError(ApiErrorKind.Canceled, 'Request canceled');
-
   if (error instanceof AxiosError) {
     const { response } = error;
     if (!response) return new ApiError(ApiErrorKind.Network, error.message);

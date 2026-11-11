@@ -11,12 +11,10 @@ export interface ProductQuery {
   page: number;
 }
 
-type ParamReader = { get(name: string): string | null };
-
 const SORT_KEYS = new Set<string>(Object.values(SortKey));
 
 // URL → typed query. Invalid values fall back to defaults instead of throwing.
-export function parseProductQuery(params: ParamReader): ProductQuery {
+export function parseProductQuery(params: URLSearchParams): ProductQuery {
   const sort = params.get(QueryParam.Sort) ?? '';
   const page = Number.parseInt(params.get(QueryParam.Page) ?? '', 10);
 
@@ -45,11 +43,7 @@ export interface ProductPage {
 }
 
 // Pure: filter → sort → paginate. The API has no paging, so all of it happens here.
-export function filterSortPaginate(
-  products: Product[],
-  query: ProductQuery,
-  pageSize: number = PAGE_SIZE,
-): ProductPage {
+export function filterSortPaginate(products: Product[], query: ProductQuery): ProductPage {
   const needle = query.q.toLowerCase();
 
   const filtered = products.filter(
@@ -66,9 +60,9 @@ export function filterSortPaginate(
   const sorted = compare ? [...filtered].sort(compare) : filtered;
 
   //Pagination
-  const totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
+  const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
   const page = Math.min(query.page, totalPages);
-  const start = (page - 1) * pageSize;
+  const start = (page - 1) * PAGE_SIZE;
 
-  return { items: sorted.slice(start, start + pageSize), total: sorted.length, page, totalPages };
+  return { items: sorted.slice(start, start + PAGE_SIZE), total: sorted.length, page, totalPages };
 }

@@ -46,7 +46,7 @@ export const useCartStore = create<CartState>()(
     {
       name: 'nova-cart',
       version: 1,
-      // Cart contents are not sensitive, so localStorage is acceptable 
+      // Cart contents are not sensitive, so localStorage is acceptable
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({ items: state.items }),
       // Rehydrated manually after mount so server HTML and the first client render match.

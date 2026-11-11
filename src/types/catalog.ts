@@ -5,5 +5,4 @@ export interface Catalog {
   categories: Category[];
 }
 
-export type ServerCatalogResult =
- { status: 'ready'; catalog: Catalog } | { status: 'error' };
+export type ServerCatalogResult = { status: 'ready'; catalog: Catalog } | { status: 'error' };

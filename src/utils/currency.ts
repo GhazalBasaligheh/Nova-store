@@ -4,8 +4,8 @@ import { env } from '@/utils/env';
 const usdFormatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 const tomanFormatter = new Intl.NumberFormat('fa-IR', { maximumFractionDigits: 0 });
 
-export function usdToToman(usd: number, rate: number = env.usdToTomanRate): number {
-  return Math.round(usd * rate);
+export function usdToToman(usd: number): number {
+  return Math.round(usd * env.usdToTomanRate);
 }
 
 /**

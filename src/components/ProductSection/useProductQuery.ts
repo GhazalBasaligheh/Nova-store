@@ -7,7 +7,7 @@ import { SortKey } from '@/types/enums/SortKey';
 import { QueryParam } from '@/types/enums/QueryParam';
 import { parseProductQuery } from '@/utils/productQuery';
 
-// List state lives in the URL (shareable, survives refresh, back/forward work).
+// List state lives in the URL, so it is shareable and survives a refresh.
 export function useProductQuery() {
   const searchParams = useSearchParams();
   const router = useRouter();
