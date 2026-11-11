@@ -1,30 +1,8 @@
-import { QueryParam } from '@/types/enums/QueryParam';
 import { SortKey } from '@/types/enums/SortKey';
 import type { Product } from '@/types/product';
+import type { ProductPage, ProductQuery } from '@/types/productQuery';
 
 export const PAGE_SIZE = 6;
-
-export interface ProductQuery {
-  q: string;
-  category: string | null;
-  sort: SortKey;
-  page: number;
-}
-
-const SORT_KEYS = new Set<string>(Object.values(SortKey));
-
-// URL → typed query. Invalid values fall back to defaults instead of throwing.
-export function parseProductQuery(params: URLSearchParams): ProductQuery {
-  const sort = params.get(QueryParam.Sort) ?? '';
-  const page = Number.parseInt(params.get(QueryParam.Page) ?? '', 10);
-
-  return {
-    q: (params.get(QueryParam.Search) ?? '').trim(),
-    category: params.get(QueryParam.Category) || null,
-    sort: SORT_KEYS.has(sort) ? (sort as SortKey) : SortKey.Default,
-    page: Number.isFinite(page) && page > 0 ? page : 1,
-  };
-}
 
 const comparators: Record<SortKey, ((a: Product, b: Product) => number) | null> = {
   [SortKey.Default]: null,
@@ -35,20 +13,13 @@ const comparators: Record<SortKey, ((a: Product, b: Product) => number) | null> 
   [SortKey.Rating]: (a, b) => b.rating.rate - a.rating.rate,
 };
 
-export interface ProductPage {
-  items: Product[];
-  total: number;
-  page: number;
-  totalPages: number;
-}
-
 // Pure: filter → sort → paginate. The API has no paging, so all of it happens here.
 export function filterSortPaginate(products: Product[], query: ProductQuery): ProductPage {
   const needle = query.q.toLowerCase();
 
   const filtered = products.filter(
     (product) =>
-      // !x || condition is a common pattern for ignoring an empty filter
+      // An empty filter matches everything.
       (!query.category || product.category === query.category) &&
       (!needle ||
         product.title.toLowerCase().includes(needle) ||
@@ -56,10 +27,9 @@ export function filterSortPaginate(products: Product[], query: ProductQuery): Pr
   );
 
   const compare = comparators[query.sort];
-  //avoid altering the original array by sort()
+  // sort() changes the array in place, so sort a copy.
   const sorted = compare ? [...filtered].sort(compare) : filtered;
 
-  //Pagination
   const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
   const page = Math.min(query.page, totalPages);
   const start = (page - 1) * PAGE_SIZE;

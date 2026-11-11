@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { useCallback } from 'react';
 import type { Locale } from '@/types/enums/Locale';
-import { formatPrice } from '@/utils/currency';
+import { formatPrice } from '@/utils/formatPrice';
 
 // Binds formatPrice to the current locale and the dictionary's currency label.
 export function usePrice() {

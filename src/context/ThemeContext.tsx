@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '@/context/theme/GlobalStyle';
 import { createTheme, darkPalette, lightPalette } from '@/context/theme/tokens';
 import { Theme } from '@/types/enums/Theme';
-import { buildThemeCookie } from '@/utils/theme';
+import { buildThemeCookie } from '@/utils/themeCookie';
 
 interface ThemeContextValue {
   theme: Theme;

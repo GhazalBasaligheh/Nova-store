@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { ChevronDownIcon } from '@/assets/Icons';
 import { useCategoryLabel } from '@/components/ProductSection/useCategoryLabel';
 import { Link } from '@/i18n/navigation';
-import { KNOWN_CATEGORIES } from '@/utils/categories';
+import { KNOWN_CATEGORIES } from '@/utils/categoryLabels';
 import { QueryParam } from '@/types/enums/QueryParam';
 import { PRODUCTS_ANCHOR, routes } from '@/utils/routes';
 

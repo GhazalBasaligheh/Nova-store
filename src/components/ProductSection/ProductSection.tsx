@@ -9,7 +9,7 @@ import { Container } from '@/shared/Container';
 import { Pagination } from '@/shared/Pagination';
 import { StatePanel } from '@/shared/StatePanel';
 import type { ServerCatalogResult } from '@/types/catalog';
-import { filterSortPaginate } from '@/utils/productQuery';
+import { filterSortPaginate } from '@/utils/filterSortPaginate';
 import { PRODUCTS_ANCHOR } from '@/utils/routes';
 import { AddToCartButton } from './AddToCartButton';
 import { CategoryChips } from './CategoryChips';
