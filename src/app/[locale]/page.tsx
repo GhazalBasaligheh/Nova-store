@@ -10,7 +10,7 @@ import { loadCatalogOnServer } from '@/requests/catalogServer';
 import { alternatesFor, baseOpenGraph, localizedPath } from '@/utils/seo';
 import { routes } from '@/utils/routes';
 
-export async function generateMetadata({ params }: PageProps<'/[locale]'>): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
   const t = await getTranslations({ locale, namespace: 'Metadata' });
@@ -26,12 +26,12 @@ export async function generateMetadata({ params }: PageProps<'/[locale]'>): Prom
   };
 }
 
-export default async function HomePage({ params }: PageProps<'/[locale]'>) {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
 
-  // Server first; the section falls back to a browser request only for blocked/network/5xx.
+  // Rendered on the server (cached for an hour), so the product grid is in the initial HTML.
   const catalog = await loadCatalogOnServer();
 
   return (

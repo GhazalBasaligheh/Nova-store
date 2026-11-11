@@ -85,14 +85,11 @@ export function ProductCard({ product, action, priority = false }: ProductCardPr
   return (
     <Card>
       <Media>
-        {/* Served straight from the API host: Next's optimizer would fetch it server-side,
-            which Cloudflare blocks (see README). */}
         <Image
           src={product.image}
           alt={product.title}
           fill
           sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-          unoptimized
           priority={priority}
         />
       </Media>

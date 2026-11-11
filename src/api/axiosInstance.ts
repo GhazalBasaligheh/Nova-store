@@ -26,9 +26,6 @@ function toApiError(error: unknown): ApiError {
     if (!response) return new ApiError(ApiErrorKind.Network, error.message);
 
     const { status } = response;
-    if (!isJson(response) || response.headers['cf-mitigated'] === 'challenge') {
-      return new ApiError(ApiErrorKind.Blocked, `Non-JSON response (${status})`, status);
-    }
     if (status >= 500) return new ApiError(ApiErrorKind.Server, `Server error (${status})`, status);
     return new ApiError(ApiErrorKind.Client, `Request failed (${status})`, status);
   }
@@ -39,13 +36,13 @@ function toApiError(error: unknown): ApiError {
   );
 }
 
-// Central error handling: every failure, including a 200 that is really an HTML challenge page,
+// Central error handling: every failure, including a 200 with a non-JSON body,
 // leaves this instance as a typed ApiError.
 axiosInstance.interceptors.response.use(
   (response) => {
     if (!isJson(response)) {
       throw new ApiError(
-        ApiErrorKind.Blocked,
+        ApiErrorKind.Parse,
         `Non-JSON response (${response.status})`,
         response.status,
       );

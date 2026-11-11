@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 const nextConfig: NextConfig = {
   // SWC transform: stable class names (SSR/hydration match) and readable displayNames in dev.
   compiler: { styledComponents: true },
+  images: {
+    remotePatterns: [{ protocol: 'https', hostname: 'fakestoreapi.com', pathname: '/img/**' }],
+  },
 };
 
 export default withNextIntl(nextConfig);

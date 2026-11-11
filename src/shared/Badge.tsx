@@ -2,7 +2,6 @@
 
 import styled from 'styled-components';
 
-// Small orange counter pinned to the inline-end/top corner of a relatively positioned parent.
 export const CountBadge = styled.span`
   position: absolute;
   top: 2px;

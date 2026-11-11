@@ -13,14 +13,3 @@ export class ApiError extends Error {
   }
 }
 
-// Failures a browser request might get past (server-side bot block, server/network trouble).
-// Client errors and malformed data would fail the same way in the browser, so they don't fall back.
-const FALLBACK_KINDS: ReadonlySet<ApiErrorKind> = new Set([
-  ApiErrorKind.Blocked,
-  ApiErrorKind.Network,
-  ApiErrorKind.Server,
-]);
-
-export function shouldFallbackToClient(error: unknown): boolean {
-  return error instanceof ApiError && FALLBACK_KINDS.has(error.kind);
-}

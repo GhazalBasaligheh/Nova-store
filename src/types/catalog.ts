@@ -6,4 +6,4 @@ export interface Catalog {
 }
 
 export type ServerCatalogResult =
-  { status: 'ready'; catalog: Catalog } | { status: 'fallback' } | { status: 'error' };
+ { status: 'ready'; catalog: Catalog } | { status: 'error' };

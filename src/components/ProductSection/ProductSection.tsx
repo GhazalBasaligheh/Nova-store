@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useMemo } from 'react';
+import { useMemo, useTransition } from 'react';
 import styled from 'styled-components';
 import { AlertIcon, SearchIcon } from '@/assets/Icons';
 import { Button } from '@/shared/Button';
@@ -15,8 +15,8 @@ import { AddToCartButton } from './AddToCartButton';
 import { CategoryChips } from './CategoryChips';
 import { ProductGrid, ProductGridSkeleton } from './ProductGrid';
 import { ProductToolbar } from './ProductToolbar';
-import { useCatalog } from './useCatalog';
 import { useProductQuery } from './useProductQuery';
+import { useRouter } from '@/i18n/navigation';
 
 const Section = styled.section`
   padding-block: ${({ theme }) => theme.spacing.xxl};
@@ -42,12 +42,15 @@ interface ProductSectionProps {
 
 export function ProductSection({ server }: ProductSectionProps) {
   const t = useTranslations();
-  const { state, retry } = useCatalog(server);
+  const router = useRouter();
+  const [isRetrying, startTransition] = useTransition();
+  const catalog = server.status === 'ready' ? server.catalog : null;
+  const retry = () => startTransition(() => router.refresh());
   const { query, setCategory, setSort, setPage, clearFilters } = useProductQuery();
 
   const result = useMemo(
-    () => (state.status === 'ready' ? filterSortPaginate(state.catalog.products, query) : null),
-    [state, query],
+    () => (catalog ? filterSortPaginate(catalog.products, query) : null),
+    [catalog, query],
   );
 
   return (
@@ -56,9 +59,9 @@ export function ProductSection({ server }: ProductSectionProps) {
         <Stack>
           <Heading id="products-heading">{t('Products.heading')}</Heading>
 
-          {state.status === 'loading' && <ProductGridSkeleton />}
+          {isRetrying && <ProductGridSkeleton />}
 
-          {state.status === 'error' && (
+          {!isRetrying && !catalog && (
             <StatePanel
               tone="danger"
               icon={<AlertIcon size={32} />}
@@ -72,10 +75,10 @@ export function ProductSection({ server }: ProductSectionProps) {
             />
           )}
 
-          {state.status === 'ready' && result && (
+          {!isRetrying && catalog && result && (
             <>
               <CategoryChips
-                categories={state.catalog.categories}
+                categories={catalog.categories}
                 selected={query.category}
                 onSelect={setCategory}
               />

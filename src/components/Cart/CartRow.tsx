@@ -121,7 +121,7 @@ export function CartRow({ item }: { item: CartItem }) {
   return (
     <RowGrid>
       <Thumb>
-        <Image src={item.image} alt="" fill sizes="72px" unoptimized />
+        <Image src={item.image} alt="" fill sizes="72px" />
       </Thumb>
       <Info>
         <Title lang="en" dir="auto" title={item.title}>
