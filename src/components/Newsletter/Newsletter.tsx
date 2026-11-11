@@ -3,84 +3,22 @@
 import { useFormik } from 'formik';
 import { useTranslations } from 'next-intl';
 import { useId } from 'react';
-import styled from 'styled-components';
 import { Button } from '@/shared/Button';
 import { Container } from '@/shared/Container';
 import type { NewsletterError } from '@/types/enums/NewsletterError';
 import { newsletterSchema, type NewsletterValues } from '@/validations/newsletter';
-
-const Section = styled.section`
-  padding-block: ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.xxl};
-`;
-
-const Panel = styled.div`
-  display: grid;
-  gap: ${({ theme }) => theme.spacing.lg};
-  padding: ${({ theme }) => theme.spacing.xl} ${({ theme }) => theme.spacing.lg};
-  border-radius: ${({ theme }) => theme.radius.lg};
-  background: ${({ theme }) => theme.colors.surfaceMuted};
-
-  ${({ theme }) => theme.media.desktop} {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: ${({ theme }) => theme.spacing.xxl};
-  }
-`;
-
-const Heading = styled.h2`
-  margin-block-end: ${({ theme }) => theme.spacing.xs};
-  font-size: 24px;
-`;
-
-const Muted = styled.p`
-  color: ${({ theme }) => theme.colors.textMuted};
-`;
-
-const Form = styled.form`
-  display: grid;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.sm};
-
-  ${({ theme }) => theme.media.tablet} {
-    flex-direction: row;
-  }
-`;
-
-const Label = styled.label`
-  font-size: 14px;
-  font-weight: 600;
-`;
-
-const Input = styled.input<{ $invalid: boolean }>`
-  flex: 1;
-  min-height: 48px;
-  padding-inline: ${({ theme }) => theme.spacing.md};
-  border: 1px solid
-    ${({ theme, $invalid }) => ($invalid ? theme.colors.danger : theme.colors.border)};
-  border-radius: ${({ theme }) => theme.radius.md};
-  background: ${({ theme }) => theme.colors.surface};
-  color: ${({ theme }) => theme.colors.text};
-
-  &:focus-visible {
-    outline: 2px solid ${({ theme }) => theme.colors.accent};
-    outline-offset: 1px;
-  }
-`;
-
-const ErrorText = styled.p`
-  font-size: 14px;
-  color: ${({ theme }) => theme.colors.danger};
-`;
-
-const SuccessText = styled.p`
-  font-weight: 600;
-  color: ${({ theme }) => theme.colors.success};
-`;
+import {
+  Section,
+  Panel,
+  Heading,
+  Muted,
+  Form,
+  Row,
+  Label,
+  Input,
+  ErrorText,
+  SuccessText,
+} from './Newsletter.styles';
 
 // No newsletter endpoint exists (FakeStoreAPI has none, and a backend is out of scope),
 // so a valid submission only shows the success state. Nothing is sent or stored.
