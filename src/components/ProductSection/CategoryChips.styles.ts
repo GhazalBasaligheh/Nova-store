@@ -3,14 +3,28 @@ import styled from 'styled-components';
 export const List = styled.ul`
   display: flex;
   gap: ${({ theme }) => theme.spacing.sm};
-  overflow-x: auto;
-  padding-block-end: ${({ theme }) => theme.spacing.xs};
   list-style: none;
-  scrollbar-width: thin;
+
+  /* Mobile: one row that scrolls sideways by touch or by dragging with the mouse, with no
+     scrollbar. The padding keeps the chips' focus ring from being clipped. */
+  overflow-x: auto;
+  padding-block: ${({ theme }) => theme.spacing.xs};
+  cursor: grab;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &[data-dragging='true'] {
+    cursor: grabbing;
+    user-select: none;
+  }
 
   ${({ theme }) => theme.media.tablet} {
     flex-wrap: wrap;
     overflow-x: visible;
+    cursor: auto;
   }
 `;
 

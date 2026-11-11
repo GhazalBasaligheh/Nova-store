@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useCategoryLabel } from '@/shared/hooks/useCategoryLabel';
 import { List, Chip } from './CategoryChips.styles';
+import { useDragScroll } from './hooks/useDragScroll';
 
 interface CategoryChipsProps {
   categories: string[];
@@ -13,9 +14,10 @@ interface CategoryChipsProps {
 export function CategoryChips({ categories, selected, onSelect }: CategoryChipsProps) {
   const t = useTranslations('Categories');
   const label = useCategoryLabel();
+  const listRef = useDragScroll<HTMLUListElement>();
 
   return (
-    <List aria-label={t('heading')}>
+    <List ref={listRef} aria-label={t('heading')}>
       <li>
         <Chip
           type="button"
