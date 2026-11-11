@@ -130,5 +130,15 @@
     "add": "Add to cart",
     "added": "Added to cart",
     "addItem": "Add {title} to cart"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "body": "The page you are looking for does not exist or has moved.",
+    "back": "Back to home"
+  },
+  "ErrorPage": {
+    "title": "Something went wrong",
+    "body": "An unexpected error happened. Please try again.",
+    "retry": "Try again"
   }
 }
