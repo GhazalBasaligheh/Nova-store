@@ -135,12 +135,15 @@ src/
 │   └── Images/           # (خالی؛ بخش پیش‌فرض‌ها)
 ├── components/           # بخش‌های سطح صفحه، هر بخش یک پوشه
 │   ├── Cart/  Footer/  Header/  Hero/  Newsletter/  ProductSection/
+│   │                     # هر بخش: کامپوننت + فایل .styles.ts؛ ProductSection یک پوشه hooks/ هم دارد
 ├── context/              # ThemeContext، رجیستری SSR برای styled-components، توکن‌های تم
 ├── dictionary/           # fa.json و en.json (پیام‌های next-intl)
 ├── i18n/                 # مسیریابی next-intl + ناوبری وابسته به زبان (بخش تفاوت‌ها)
 ├── modals/               # (خالی: مودالی لازم نشد)
 ├── requests/             # توابع درخواست API (محصولات، بارگذار کاتالوگ سمت سرور)
-├── shared/               # UI قابل استفاده مجدد: Button، Badge، Container، Pagination، Rating، ...
+├── shared/
+│   ├── ui/               # UI قابل استفاده مجدد: Button، Badge، Container، Pagination، Rating، ...
+│   └── hooks/            # هوک‌هایی که بیش از یک بخش استفاده می‌کند: usePrice، useCategoryLabel
 ├── storage/              # store سبد خرید با Zustand + ابزارهای hydration
 ├── types/
 │   └── enums/            # Locale، Direction، Theme، SortKey، ApiErrorKind، CategorySlug
@@ -159,9 +162,14 @@ src/
   `src/i18n/navigation.ts` قرار گرفته‌اند.
 - **توکن‌های تم در `context/theme/`** و کنار ThemeContext که از آن‌ها استفاده می‌کند قرار دارند.
 - **مسیرهای متمرکز در `utils/routes.ts`** هستند، چون ساختار Store پوشه `Routes/` ندارد.
-- **هوک‌های مخصوص یک بخش کنار همان بخش هستند** (`components/ProductSection/useProductQuery.ts`،
-  `useCategoryLabel.ts` و `components/Cart/usePrice.ts`). سند چالش پوشه hooks ندارد و هر کدام فقط در همان بخش استفاده
-  می‌شود؛ منطقی که به آن تکیه دارند به‌صورت توابع خالص در `utils/` است.
+- **هوک‌ها جدا از کامپوننت‌های UI در پوشه‌های `hooks/` هستند.** سند چالش پوشه hooks ندارد. قاعده: هوکی که فقط یک بخش
+  استفاده می‌کند در `hooks/` همان بخش است (`components/ProductSection/hooks/useProductQuery.ts`) و هوکی که بیش از یک بخش
+  استفاده می‌کند در `shared/hooks/` (`usePrice`، `useCategoryLabel`). منطقی که هوک‌ها به آن تکیه دارند به‌صورت توابع خالص
+  در `utils/` است.
+- **`shared/` به `ui/` و `hooks/` تقسیم شده است**، تا کامپوننت‌های پایه و هوک‌ها کنار هم قاطی نشوند.
+- **استایل‌ها کنار کامپوننت و در فایل جداگانه `<Name>.styles.ts` هستند** (مثلاً `Header.tsx` و `Header.styles.ts`)، پس فایل
+  کامپوننت فقط منطق و ساختار است. اجزای پایه‌ای که خودشان فقط یک styled component هستند (`Button`، `Badge`، `Container`،
+  `Skeleton`) همان‌طور در یک فایل مانده‌اند.
 
 ## معماری
 
@@ -240,7 +248,7 @@ src/
 - اکشن‌ها: `add`، `increment`، `decrement` (هرگز کمتر از ۱)، `remove`، `clear`. تعداد اقلام و جمع جزء با
   سلکتورها محاسبه می‌شوند و ذخیره نمی‌شوند.
 - قیمت‌ها به **دلار** ذخیره می‌شوند و فقط هنگام نمایش تبدیل می‌شوند.
-- با کلید `nova-cart` (نسخه‌دار) در `localStorage` ذخیره می‌شود. سبد خرید داده حساسی ندارد، پس طبق سند چالش استفاده از
+- با کلید `nova-cart` در `localStorage` ذخیره می‌شود و نسخه‌دار است (`version: 1`)، تا اگر ساختار `CartItem` بعداً عوض شد بتوان داده ذخیره‌شده قدیمی را مهاجرت داد. سبد خرید داده حساسی ندارد، پس طبق سند چالش استفاده از
   `localStorage` قابل قبول است.
 - **ایمنی hydration:** سرور نمی‌تواند `localStorage` را بخواند، پس state ذخیره‌شده فقط بعد از mount بارگذاری می‌شود
   (`skipHydration` + `CartHydrator`). تا آن زمان نشان سبد عددی نشان نمی‌دهد و صفحه سبد اسکلتون نمایش می‌دهد، بنابراین HTML
