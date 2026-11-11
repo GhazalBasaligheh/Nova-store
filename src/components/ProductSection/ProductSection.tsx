@@ -3,10 +3,10 @@
 import { useTranslations } from 'next-intl';
 import { useMemo, useTransition } from 'react';
 import { AlertIcon, SearchIcon } from '@/assets/Icons';
-import { Button } from '@/shared/Button';
-import { Container } from '@/shared/Container';
-import { Pagination } from '@/shared/Pagination';
-import { StatePanel } from '@/shared/StatePanel';
+import { Button } from '@/shared/ui/Button';
+import { Container } from '@/shared/ui/Container';
+import { Pagination } from '@/shared/ui/Pagination';
+import { StatePanel } from '@/shared/ui/StatePanel';
 import type { ServerCatalogResult } from '@/types/catalog';
 import { filterSortPaginate } from '@/utils/filterSortPaginate';
 import { PRODUCTS_ANCHOR } from '@/utils/routes';
@@ -15,7 +15,7 @@ import { AddToCartButton } from './AddToCartButton';
 import { CategoryChips } from './CategoryChips';
 import { ProductGrid, ProductGridSkeleton } from './ProductGrid';
 import { ProductToolbar } from './ProductToolbar';
-import { useProductQuery } from './useProductQuery';
+import { useProductQuery } from './hooks/useProductQuery';
 import { useRouter } from '@/i18n/navigation';
 import { Section, Stack, Heading } from './ProductSection.styles';
 

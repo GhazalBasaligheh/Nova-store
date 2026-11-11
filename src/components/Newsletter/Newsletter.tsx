@@ -3,8 +3,8 @@
 import { useFormik } from 'formik';
 import { useTranslations } from 'next-intl';
 import { useId } from 'react';
-import { Button } from '@/shared/Button';
-import { Container } from '@/shared/Container';
+import { Button } from '@/shared/ui/Button';
+import { Container } from '@/shared/ui/Container';
 import type { NewsletterError } from '@/types/enums/NewsletterError';
 import { newsletterSchema, type NewsletterValues } from '@/validations/newsletter';
 import {

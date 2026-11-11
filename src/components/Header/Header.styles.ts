@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from '@/i18n/navigation';
-import { IconButton } from '@/shared/Button';
+import { IconButton } from '@/shared/ui/Button';
 
 export const Bar = styled.header`
   position: sticky;

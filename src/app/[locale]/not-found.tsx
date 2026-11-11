@@ -2,8 +2,8 @@
 
 import { useTranslations } from 'next-intl';
 import { SearchIcon } from '@/assets/Icons';
-import { Container } from '@/shared/Container';
-import { StatePanel } from '@/shared/StatePanel';
+import { Container } from '@/shared/ui/Container';
+import { StatePanel } from '@/shared/ui/StatePanel';
 import { routes } from '@/utils/routes';
 import { Main, HomeLink } from './not-found.styles';
 

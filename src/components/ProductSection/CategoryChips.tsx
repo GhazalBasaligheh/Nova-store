@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useCategoryLabel } from './useCategoryLabel';
+import { useCategoryLabel } from '@/shared/hooks/useCategoryLabel';
 import { List, Chip } from './CategoryChips.styles';
 
 interface CategoryChipsProps {

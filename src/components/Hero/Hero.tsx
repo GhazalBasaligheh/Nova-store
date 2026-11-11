@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { BagIcon } from '@/assets/Icons';
-import { Container } from '@/shared/Container';
+import { Container } from '@/shared/ui/Container';
 import { PRODUCTS_ANCHOR, routes } from '@/utils/routes';
 import { Wrapper, Panel, Copy, Eyebrow, Title, Subtitle, Cta, Art } from './Hero.styles';
 

@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { BagIcon } from '@/assets/Icons';
-import { Container } from '@/shared/Container';
+import { Container } from '@/shared/ui/Container';
 import { Wrapper, Columns, Brand, Muted, Heading, LinkList, Bottom } from './Footer.styles';
 
 // Placeholder targets: the brief allows non-functional footer links.
