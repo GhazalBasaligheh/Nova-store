@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { hasLocale } from 'next-intl';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Hero } from '@/components/Hero/Hero';
 import { Newsletter } from '@/components/Newsletter/Newsletter';
@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: PageProps<'/[locale]'>): Prom
 export default async function HomePage({ params }: PageProps<'/[locale]'>) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
-  setRequestLocale(locale);
 
   // Rendered on the server (cached for an hour), so the product grid is in the initial HTML.
   const catalog = await loadCatalogOnServer();
