@@ -11,6 +11,7 @@ import { StatePanel } from '@/shared/StatePanel';
 import type { ServerCatalogResult } from '@/types/catalog';
 import { filterSortPaginate } from '@/utils/filterSortPaginate';
 import { PRODUCTS_ANCHOR } from '@/utils/routes';
+import { scrollToProducts } from '@/utils/scrollToProducts';
 import { AddToCartButton } from './AddToCartButton';
 import { CategoryChips } from './CategoryChips';
 import { ProductGrid, ProductGridSkeleton } from './ProductGrid';
@@ -104,7 +105,10 @@ export function ProductSection({ server }: ProductSectionProps) {
                   <Pagination
                     page={result.page}
                     totalPages={result.totalPages}
-                    onChange={setPage}
+                    onChange={(page) => {
+                      setPage(page);
+                      scrollToProducts();
+                    }}
                   />
                 </>
               )}

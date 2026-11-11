@@ -6,7 +6,8 @@ import { useId, type FormEvent } from 'react';
 import styled from 'styled-components';
 import { SearchIcon } from '@/assets/Icons';
 import { getPathname, useRouter } from '@/i18n/navigation';
-import { routes } from '@/utils/routes';
+import { PRODUCTS_ANCHOR, routes } from '@/utils/routes';
+import { scrollToProducts } from '@/utils/scrollToProducts';
 
 const Form = styled.form`
   position: relative;
@@ -68,13 +69,17 @@ export function SearchForm() {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const q = String(new FormData(event.currentTarget).get('q') ?? '').trim();
-    router.push({ pathname: routes.home, query: q ? { q } : {} });
+    // The hash scrolls to the results after navigating from another page;
+    // scrollToProducts covers a search made while already on the home page.
+    const search = q ? `?${new URLSearchParams({ q })}` : '';
+    router.push(`${routes.home}${search}#${PRODUCTS_ANCHOR}`);
+    scrollToProducts();
   };
 
   return (
     <Form
       role="search"
-      action={getPathname({ href: routes.home, locale })}
+      action={`${getPathname({ href: routes.home, locale })}#${PRODUCTS_ANCHOR}`}
       method="get"
       onSubmit={handleSubmit}
     >
